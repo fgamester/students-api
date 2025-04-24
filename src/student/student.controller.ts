@@ -7,7 +7,7 @@ export class StudentController {
     constructor(private readonly studentService: StudentService) { }
 
     @Post()
-    async create(@Body() newData: Partial<Student>): Promise<Student> {
+    async postStudent(@Body() newData: Partial<Student>): Promise<Student> {
         return this.studentService.create(newData);
     }
 
@@ -28,16 +28,17 @@ export class StudentController {
 
     @Patch(':id')
     async update(@Param('id') id: number, @Body() newData: Partial<Student>): Promise<Student | null> {
+        console.log(newData);
         return this.studentService.update(id, newData);
     }
 
     @Patch('sremove/:id')
-    async softRemove(@Param('id') id: number): Promise<void> {
+    async softRemove(@Param('id') id: number): Promise<Student | null> {
         return this.studentService.softRemove(id);
     }
 
     @Delete(':id')
     async remove(@Param('id') id: number): Promise<void> {
-        return this.studentService.remove(id);
+        await this.studentService.remove(id);
     }
 }

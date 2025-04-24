@@ -8,7 +8,7 @@ export class Subject {
     @Column({ length: 30 })
     name: string;
 
-    @Column({ length: 300 })
+    @Column({ length: 300, nullable: true })
     description: string;
 
     @Column({ default: true })

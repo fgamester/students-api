@@ -32,11 +32,12 @@ export class StudentService {
         return this.findOne(id);
     }
 
-    async softRemove(id: number): Promise<void> {
+    async softRemove(id: number): Promise<Student | null> {
         await this.studentRepository.update(id, { active: false })
+        return this.findOne(id);
     }
 
-    async remove(id: number):Promise<void>{
+    async remove(id: number): Promise<void> {
         await this.studentRepository.delete(id)
     }
 }

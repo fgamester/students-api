@@ -3,6 +3,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StudentModule } from './student/student.module';
+import { SubjectModule } from './subject/subject.module';
 import * as dotenv from 'dotenv'
 
 dotenv.config()
@@ -19,7 +20,8 @@ logger.log(process.env.DATABASE_URL)
       autoLoadEntities: true,
       synchronize: true
     }),
-    StudentModule
+    StudentModule,
+    SubjectModule
   ],
   controllers: [AppController],
   providers: [AppService],
