@@ -97,4 +97,44 @@ npm run start:dev
 
 Esto iniciará la aplicación en modo desarrollo. Puedes acceder a la API en `http://localhost:3000`. Puedes acceder a los endpoints de la API a través de Postman o cualquier otro cliente HTTP. Adicionalmente puedes utilizar el frontend que se encuentra en el siguiente repositorio:
 
-### Instalación y configuración de la API con Docker
+### Utilizar container de Docker
+
+Primero deberemos realizar un pull de la imagen de Docker:
+```bash
+docker pull fgamester/student-api
+```
+
+Luego ejecutamos el contenedor:
+```bash
+docker run --name <nombre-container> -d -e DATABASE_URL=postgres://<usuario>:<contraseña>@host.docker.internal:<5432>/<database> -p <3000>:3000 fgamester/student-api
+```
+
+#### ¿Que puedes cambiar aquí?
+- `<nombre-container>`: Nombre del contenedor de la API. Puedes ponerle el nombre que desees.
+- `<3000>`: Puerto en el que se ejecutará el contenedor. Puedes cambiarlo por el puerto que desees (recuerda utilizar un puerto disponible).
+- `<usuario>`: Nombre del usuario de PostgreSQL (fue el nombre que definimos anteriormente al crear el contenedor de postgres).
+- `<contraseña>`: Contraseña del usuario especificado anteriormente (fue la contraseña que definimos junto con el usuario).
+- `<5432>`: Puerto de PostgreSQL. Puedes cambiarlo por el puerto que hayas expuesto tu contenedor de postgres anteriormente.
+- `<database>`: Nombre de la base de datos que creamos anteriormente (la que utilizaremos para conectarnos desde la API).
+- `host.docker.internal`: Este es un host especial que Docker proporciona para acceder a la red del host desde el contenedor. Esto es útil para conectarse a servicios que se ejecutan en el host, como PostgreSQL.
+
+Si todo ha ido bien, la terminal responderá con el ID del contenedor y podrás acceder a la api en `http://localhost:3000` o el puerto que hayas especificado.
+
+#### Comandos adicionales
+
+Para detener el contenedor puedes usar el siguiente comando:
+```bash
+docker stop <nombre-container>
+```
+Para iniciar el contenedor nuevamente puedes usar el siguiente comando:
+```bash
+docker start <nombre-container>
+```
+Para eliminar el contenedor puedes usar el siguiente comando:
+```bash
+docker rm <nombre-container>
+```
+Para eliminar la imagen puedes usar el siguiente comando:
+```bash
+docker rmi <nombre-imagen>
+```
