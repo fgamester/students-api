@@ -27,6 +27,8 @@ Las tablas constan de los siguientes campos:
   - active (booleano utilizado para un borrado lógico).
 
 
+Puedes utilizar la API con el frontend que se encuentra en el siguiente repositorio: [Frontend](https://github.com/fgamester/student-front)
+
 ## Tecnologías utilizadas
 
 - **TypeScript:** Lenguaje de programación que es un superconjunto de JavaScript.
@@ -76,7 +78,7 @@ Ahora tenemos lista nuestra base de datos para conectarnos desde la API.
 
 1. Clonar el repositorio:
 ```bash
-git clone 
+git clone https://github.com/fgamester/students-api.git
 ```
 
 2. Instalar las dependencias:
